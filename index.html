@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>shopping</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+	
+	<style type="text/css">
+*{
+  padding: 0;
+  margin: 0;
+  font-family:sans-serif;
+  box-sizing: border-box;
+}
+
+/*navigation*/
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem 5%;
+  background: #D69ADE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+
+.logo{
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.logo:hover{
+  color: #DE3163 ;
+}
+ .search{
+  display: flex;
+  color: white;
+  width: 20%;
+  padding: 10px 0 10px ;
+  border-radius: 10px;
+  border: none;
+  background-color:#9656a1 ;
+ }
+
+ .fa-magnifying-glass{
+  padding-left: 10px;
+ }
+
+ .search input::placeholder{
+  color: white;
+ }
+
+ .search input{
+  width: 85%;
+  color: white;
+  border: none;
+  outline: none;
+  background: none;
+  padding-left:10px ;
+  font-size: 15px;
+ }
+
+.navbar a{
+  font-size: 1.15;
+  color: #271c19;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2px;
+  padding: 15px;
+}
+
+.navbar a:hover{
+  background: #EABDE6;
+  border-radius: 25px;
+}
+
+#check{
+  display: none;
+}
+
+.icons{
+  padding: 10px;
+
+}
+
+.icon{
+  position: absolute;
+  font-size: 2.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  right: 5%;
+}
+
+.fa-cart-shopping{
+  position: absolute;
+  font-size: 25px;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: #55423d;
+}
+
+
+@media (max-width: 1114px){
+  .icon{
+    display: inline-flex;
+  }
+
+  #check:checked~.icon #menu-icon{
+    display: none;
+  }
+
+  .icon #close-icon{
+    display: none;
+  }
+
+  #check:checked~.icon #close-icon{
+    display: block;
+  }
+
+  .navbar{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: pink;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  #check:checked~.navbar{
+    display: block;
+    height: 21rem;
+  }
+
+  .navbar a{
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform:translateY(-50px) ;
+    transition: .3s ease;
+    padding: 10px;
+  }
+
+  .navbar a:hover{
+    border-radius: 0;
+    color: white;
+    background-color: #56021F;
+  }
+
+  #check:checked~.navbar a{
+    transform:translateY(0) ;
+    transition-delay:calc(.15s * var(--i));
+  }
+
+  .search{
+    width: 31%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .fa-cart-shopping{
+  position: absolute;
+  font-size: 25px;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  }
+
+  .fa-magnifying-glass{
+    padding-right: 10px;
+  }
+
+
+}
+/*navigation*/
+
+/*banner*/
+  .banner{
+    height: 60vh;
+    background-color: #872341;
+    height: 593px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+}
+
+.banner img{
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    position:static;
+    border: 6px solid white;
+    margin: 20px;
+
+
+}
+
+.nama h2 h1{
+    width: 100px;
+    text-align: center;
+    color: #FBFFE4;
+
+}
+
+
+h2 span:before{
+    content:'';
+    animation: gerak infinite 5s ease;
+    transform: translateY(-50%);
+    color: #FFA09B;
+    font-family: 70px;
+}
+
+.info{
+  display: flex;
+  width: 198px;
+  margin-top: 30px;
+  border: 2px solid ;
+  padding: 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  background: #BE3144;
+}
+
+.info:hover{
+  background: #D76C82;
+}
+
+.sosmed{
+  display: inline-flex;
+  color: #004643;
+  text-decoration: none;
+  margin-top: 30px;
+  font-size: 30px;
+  background-color: #E17564;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+.sosmed:hover{
+  color: #09122C;
+  background-color: #EB5A3C;
+}
+
+@keyframes gerak{
+    0%{
+        content: 'Selamat Datang';
+    }
+    100%{
+        content: 'Selamat Berkunjung';
+    }
+
+}
+
+@media (max-width: 1114px){
+  .banner{
+    display:flex;
+    width: 100%;
+    height: 500px;
+    padding: 50px;
+    margin-top: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner img{
+    width: 250px;
+    height: 250px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    position:static;
+    border: 6px solid white;
+  }
+
+  .banner h2{
+    font-size: 29px;
+  }
+
+  .banner h3{
+    font-size: 23px;
+  }
+}
+/*banner*/
+
+/*product*/
+
+.products{
+  padding: 5rem 5%;
+  background-color: #E195AB;
+}
+
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.product-card{
+  background: #667BC6;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid rgba(225, 225, 225, .1);
+}
+
+.product-card:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, .2);
+}
+
+.product-image{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  filter: grayscale(20%);
+}
+
+.product-card:hover .product-image{
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.product-info{
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.product-title{
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.product-price{
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.cart{
+  background: none;
+  border: none;
+  float: right;
+  padding-bottom: 20px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.cart:hover{
+  color: black;
+}
+
+/*product*/
+
+/*service*/
+
+.section{
+  background-color: #DE3163;
+  height: 500px;
+}
+
+.title h1{
+  text-align: center;
+  padding-top: 50px;
+  font-size: 42px;
+}
+
+.title h1::after{
+  content: "";
+  height: 4px;
+  width: 230px;
+  background-color: #000;
+  display: block;
+  margin: auto;
+}
+
+.services{
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 75px auto;
+  text-align: center;
+}
+
+.card{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 20px;
+  padding: 20px 20px;
+  background-color: #CCDF92;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card:hover{
+  background-color: #FBF3B9;
+  transition: 1s ease;
+}
+
+.card .simbol{
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.card h2{
+  font-size: 28px;
+  color: #c94f4f;
+  margin-bottom: 20px;
+}
+
+.card p{
+  font-size: 17px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color: #5e5e5e;
+}
+
+.button{
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  background: #7D1C4A;
+  padding: 8px 12px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+
+.button:hover{
+  background: #56021F;
+  transition: 0.4s ease;
+}
+
+@media (max-width: 1114px){
+  .services{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card{
+    width: 70%;
+    display: flex;
+    margin: 20px 0px;
+  }
+
+  .section{
+  height: 100%;
+  }
+}
+
+/*service*/
+
+
+	</style>
+
+</head>
+
+
+
+<body>
+	<!-- navigation -->
+  <header class="header">
+    <a href="#" class="logo">Logo</a>
+
+    <div class="search">
+    <input type="search" placeholder="Search.." >
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <a href="#"><i class="fa-solid fa-cart-shopping "></i></a>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="icon">
+      <i class="fa-solid fa-bars" id="menu-icon"></i>
+      <i class="fa-solid fa-x" id="close-icon"></i>
+    </label>
+
+    <nav class="navbar">
+      <a href="#home" style="--i:0;"><i class="fa-solid fa-house icons"></i>Home</a>
+      <a href="#product" style="--i:1;"><i class="fa-solid fa-shirt icons"></i>Product</a>
+      <a href="#service" style="--i:3;"><i class="fa-solid fa-address-book icons"></i>Service</a>
+      <a href="#" style="--i:4;"><i class="fa-solid fa-user icons"></i>Contact</a>
+    </nav>
+  </header>
+	<!-- navigation -->
+
+  <!-- banner -->
+  <div class="banner" id="home"> 
+      <div class="nama">
+
+          <h2><span></span></h2>
+          <h3>Terima Kasih Sudah Berkunjung</h3>
+          <a href="#" class="sosmed"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="sosmed"><i class="fa-regular fa-envelope"></i></a>
+          <a href="#" class="sosmed"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="info">Info Selengkapnya</a>
+      </div>
+      <img src="me.jpeg" >
+  </div>
+  <!-- banner -->
+
+  <!-- product -->
+  <section class="products" id="product">
+    <div class="product-grid">
+
+      <!-- product 1 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- product 2 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- product 3 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- product 4 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- product 5 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- product 6 -->
+      <div class="product-card">
+        <img src="product.png" class="product-image">
+        <div class="product-info">
+          <h3 class="product-title">Jeans</h3>
+          <p class="product-price">$20</p>
+          <button type="product-price" class="cart"><i class="fa-solid fa-cart-plus"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- product -->
+
+  <!-- service -->
+  <div class="section">
+    <div class="title">
+      <h1 id="service">Our Services</h1>
+    </div>
+    <div class="services">
+        <div class="card">
+          <div class="simbol">
+            <i class="fas fa-calendar"></i>
+          </div>
+          <h2>Planning</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="button">Read More</a>
+        </div> 
+
+        <div class="card">
+          <div class="simbol">
+            <i class="fas fa-wrench"></i>
+          </div>
+          <h2>Renovation</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="button">Read More</a>
+        </div>
+
+        <div class="card">
+          <div class="simbol">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h2>Support</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="button">Read More</a>
+        </div> 
+    </div> 
+  </div>
+  <!-- service -->
+
+   <!-- contact -->
+   <h1 style="text-align: center; font-size: 200px;">C0MING SOON</h1>
+    <!-- contact -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+</html>
